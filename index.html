@@ -3,14 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embed Code Parser</title>
+  <title>Embedding PolyCam Recording</title>
 </head>
 <body>
-  <h1>Embed Code Parser</h1>
-  <textarea id="embed-code" placeholder="Paste embed code here..."></textarea>
-  <button onclick="parseEmbedCode()">Parse</button>
-  <div id="post-preview"></div>
+  <h1>Embedding PolyCam Recording</h1>
 
-  <script src="script.js"></script>
+  <!-- Textarea for users to input PolyCam embed code -->
+  <textarea id="polyCamEmbedCode" placeholder="Paste PolyCam embed code here..."></textarea>
+  <button onclick="embedPolyCamRecording()">Embed Recording</button>
+
+  <!-- Div to display the embedded recording -->
+  <div id="embeddedRecording"></div>
+
+  <script>
+    function embedPolyCamRecording() {
+      var embedCode = document.getElementById("polyCamEmbedCode").value;
+      
+      // Validate if embed code is not empty
+      if(embedCode.trim() !== "") {
+        // Display the embedded recording
+        document.getElementById("embeddedRecording").innerHTML = embedCode;
+      } else {
+        // Show error message if embed code is empty
+        document.getElementById("embeddedRecording").innerHTML = "<p>Please input the PolyCam embed code.</p>";
+      }
+    }
+  </script>
+
 </body>
 </html>
