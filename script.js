@@ -1,42 +1,12 @@
-function parseEmbedCode() {
-  var embedCode = document.getElementById("embed-code").value;
+function embedPolyCamRecording() {
+  var embedCode = document.getElementById("polyCamEmbedCode").value;
 
-  // Example regex to extract text content
-  var textContent = extractTextContent(embedCode);
-
-  // Example regex to extract image URL
-  var imageUrl = extractImageUrl(embedCode);
-
-  // Generate post preview
-  var postPreviewHTML = '<div>';
-  postPreviewHTML += '<p>' + textContent + '</p>';
-  if (imageUrl) {
-    postPreviewHTML += '<img src="' + imageUrl + '" alt="Embedded Image">';
-  }
-  postPreviewHTML += '</div>';
-
-  // Display post preview
-  document.getElementById("post-preview").innerHTML = postPreviewHTML;
-}
-
-function extractTextContent(embedCode) {
-  // Example regex to extract text content
-  var regex = /<p>(.*?)<\/p>/g;
-  var match = regex.exec(embedCode);
-  if (match) {
-    return match[1];
+  // Validate if embed code is not empty
+  if(embedCode.trim() !== "") {
+    // Display the embedded recording
+    document.getElementById("embeddedRecording").innerHTML = embedCode;
   } else {
-    return 'No text content found';
-  }
-}
-
-function extractImageUrl(embedCode) {
-  // Example regex to extract image URL
-  var regex = /<img src="(.*?)" alt="Embedded Image">/g;
-  var match = regex.exec(embedCode);
-  if (match) {
-    return match[1];
-  } else {
-    return null;
+    // Show error message if embed code is empty
+    document.getElementById("embeddedRecording").innerHTML = "<p>Please input the PolyCam embed code.</p>";
   }
 }
